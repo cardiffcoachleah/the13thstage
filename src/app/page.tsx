@@ -65,6 +65,23 @@ export default function Home() {
       } catch (err) {
         console.error("Failed to send guide:", err);
       }
+
+      // Sync to Mailchimp if they opted in
+      if (newsletterOptIn) {
+        try {
+          await fetch("/api/mailchimp-sync", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email,
+              band: result.band.id,
+              newsletterOptIn,
+            }),
+          });
+        } catch (err) {
+          console.error("Failed to sync to Mailchimp:", err);
+        }
+      }
     }
   };
 
