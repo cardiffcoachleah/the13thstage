@@ -85,7 +85,7 @@ export default function Home() {
 
       {/* ─── Hero ─────────────────────────────────────────── */}
       {quizState !== "complete" && (
-        <section className="relative min-h-[92vh] flex flex-col items-center justify-center px-5 overflow-hidden">
+        <section className="relative min-h-[92vh] flex flex-col items-center justify-center px-5 pt-16 overflow-hidden">
           {/* Background */}
           <div
             className="absolute inset-0 -z-10"
@@ -131,7 +131,7 @@ export default function Home() {
               className="mt-12 mb-6"
             >
               <h1
-                className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-[120px] leading-[0.85] tracking-tight px-2"
+                className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-[120px] leading-[0.85] tracking-tight px-2 sm:whitespace-nowrap"
                 style={{ color: "#fef3c7" }}
               >
                 The 13th Stage
