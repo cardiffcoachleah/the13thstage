@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #1a1a2e;
+  --color-navy: #16213e;
+  --color-ember: #d4622a;
+  --color-amber: #e8a838;
+  --color-sienna: #c0392b;
+  --color-gold: #f4d58d;
+  --color-cream: #faf3e6;
+  --color-peach: #f5c7a9;
+  --color-light-amber: #fbe8c8;
+  --color-warm-white: #fffbf5;
+  --color-dawn: #f7e6c4;
+  --color-dawn-glow: #fceabb;
+  --color-text-dark: #2c2c2c;
+  --color-text-medium: #555555;
+  --color-text-light: #8a8580;
+  --color-line: #d4d0ca;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  background-color: var(--color-warm-white);
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+@keyframes flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+  25% { transform: scaleY(1.02) scaleX(0.98); opacity: 0.95; }
+  50% { transform: scaleY(0.98) scaleX(1.01); opacity: 1; }
+  75% { transform: scaleY(1.01) scaleX(0.99); opacity: 0.97; }
+}
+
+@keyframes dawn-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
