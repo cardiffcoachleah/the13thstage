@@ -53,6 +53,19 @@ export default function Home() {
     } catch (err) {
       console.error("Failed to save quiz results:", err);
     }
+
+    // Send the free guide via email
+    if (email) {
+      try {
+        await fetch("/api/send-guide", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, band: result.band.id }),
+        });
+      } catch (err) {
+        console.error("Failed to send guide:", err);
+      }
+    }
   };
 
   const handleRetake = () => {
