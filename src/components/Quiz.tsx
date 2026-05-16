@@ -12,7 +12,7 @@ import {
 } from "@/lib/quiz-data";
 
 interface QuizProps {
-  onComplete: (answers: QuizAnswers, result: QuizResult) => void;
+  onComplete: (answers: QuizAnswers, result: QuizResult, email: string, newsletterOptIn: boolean) => void;
 }
 
 type Phase = "intro" | "context" | "assessment" | "email";
@@ -105,8 +105,8 @@ export function Quiz({ onComplete }: QuizProps) {
   const handleSubmit = useCallback(() => {
     const answers: QuizAnswers = { context: contextAnswers, scores };
     const result = calculateResults(answers);
-    onComplete(answers, result);
-  }, [contextAnswers, scores, onComplete]);
+    onComplete(answers, result, email, newsletterOptIn);
+  }, [contextAnswers, scores, email, newsletterOptIn, onComplete]);
 
   // ─── Animation variants ────────────────────────────────────────
 

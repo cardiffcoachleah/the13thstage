@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Quiz } from "@/components/Quiz";
 import { Results } from "@/components/Results";
 import { FlameArc } from "@/components/Flame";
+import { getSupabase } from "@/lib/supabase";
 import type { QuizAnswers, QuizResult } from "@/lib/quiz-data";
 
 export default function Home() {
@@ -22,11 +23,37 @@ export default function Home() {
     }, 100);
   };
 
-  const handleComplete = (answers: QuizAnswers, result: QuizResult) => {
+  const handleComplete = async (
+    answers: QuizAnswers,
+    result: QuizResult,
+    email: string,
+    newsletterOptIn: boolean
+  ) => {
     setAnswers(answers);
     setResult(result);
     setQuizState("complete");
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Save to Supabase (fire and forget — don't block the UI)
+    try {
+      const supabase = getSupabase();
+      if (supabase) {
+        await supabase.from("quiz_results").insert({
+          email: email || null,
+          newsletter_opt_in: newsletterOptIn,
+          context_answers: answers.context,
+          scores: answers.scores,
+          total_score: result.totalScore,
+          band: result.band.id,
+          flagged_stages: result.flaggedStages,
+          highest_flagged_stage: result.highestFlaggedStage,
+          has_cluster_override: result.hasClusterOverride,
+        });
+      }
+    } catch (err) {
+      // Don't break the experience if Supabase is down
+      console.error("Failed to save quiz results:", err);
+    }
   };
 
   const handleRetake = () => {
