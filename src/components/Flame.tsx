@@ -146,11 +146,13 @@ export function FlameArc({
   className?: string;
 }) {
   return (
-    <div className={`flex items-end justify-center gap-1 sm:gap-2 ${className}`}>
+    <div className={`flex items-end justify-center gap-1.5 sm:gap-2.5 ${className}`}>
       {Array.from({ length: 12 }, (_, i) => {
         const stage = i + 1;
         const intensity = stage / 12;
         const isHighlighted = highlightStage !== undefined && stage <= highlightStage;
+        // Bigger base size — flames more visible
+        const flameSize = 20 + intensity * 22;
         return (
           <div
             key={stage}
@@ -161,12 +163,12 @@ export function FlameArc({
             }}
           >
             <Flame
-              size={14 + intensity * 18}
+              size={flameSize}
               intensity={intensity}
               animated={isHighlighted}
             />
             <span
-              className="text-[9px] sm:text-[10px] mt-1"
+              className="text-[9px] sm:text-[11px] mt-1"
               style={{
                 fontFamily: "var(--font-body)",
                 color: isHighlighted ? "#ea580c" : "#78716c",
@@ -177,18 +179,18 @@ export function FlameArc({
           </div>
         );
       })}
-      {/* The 13th Stage - dawn glow */}
+      {/* The 13th Stage - dawn glow — bigger than the 12th */}
       <div
-        className="flex flex-col items-center ml-2 sm:ml-3"
+        className="flex flex-col items-center ml-3 sm:ml-4"
         style={{
           opacity:
             highlightStage !== undefined && highlightStage >= 13 ? 1 : 0.25,
           transition: "opacity 0.5s ease",
         }}
       >
-        <DawnGlow size={50} />
+        <DawnGlow size={70} />
         <span
-          className="text-[9px] sm:text-[10px] mt-1 font-semibold"
+          className="text-[10px] sm:text-[12px] mt-1 font-semibold"
           style={{ fontFamily: "var(--font-body)", color: "#d97706" }}
         >
           13

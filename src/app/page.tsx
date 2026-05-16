@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Quiz } from "@/components/Quiz";
 import { Results } from "@/components/Results";
 import { FlameArc } from "@/components/Flame";
@@ -34,7 +35,6 @@ export default function Home() {
     setQuizState("complete");
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Save to Supabase (fire and forget — don't block the UI)
     try {
       const supabase = getSupabase();
       if (supabase) {
@@ -51,7 +51,6 @@ export default function Home() {
         });
       }
     } catch (err) {
-      // Don't break the experience if Supabase is down
       console.error("Failed to save quiz results:", err);
     }
   };
@@ -66,15 +65,15 @@ export default function Home() {
     <div className="min-h-screen">
       {/* ─── Results View ─────────────────────────────────── */}
       {quizState === "complete" && result && answers && (
-        <section className="px-5 pt-16 sm:pt-24 pb-12">
+        <section className="px-5 pt-24 sm:pt-32 pb-12">
           <Results result={result} answers={answers} onRetake={handleRetake} />
         </section>
       )}
 
       {/* ─── Hero ─────────────────────────────────────────── */}
       {quizState !== "complete" && (
-        <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-5 overflow-hidden">
-          {/* Background — warm black, not blue */}
+        <section className="relative min-h-[92vh] flex flex-col items-center justify-center px-5 overflow-hidden">
+          {/* Background */}
           <div
             className="absolute inset-0 -z-10"
             style={{
@@ -82,16 +81,12 @@ export default function Home() {
                 "radial-gradient(ellipse 80% 60% at 50% 40%, #292524 0%, #1c1917 70%)",
             }}
           />
-
-          {/* Very subtle warm noise texture */}
           <div
             className="absolute inset-0 -z-[5] opacity-[0.03] mix-blend-overlay"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
             }}
           />
-
-          {/* Warm horizon glow at bottom */}
           <div
             className="absolute bottom-0 left-0 right-0 h-48 -z-[4]"
             style={{
@@ -106,7 +101,7 @@ export default function Home() {
             transition={{ duration: 1.2 }}
             className="text-center max-w-2xl mx-auto"
           >
-            {/* Flame arc */}
+            {/* Flame arc — bigger */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -115,23 +110,18 @@ export default function Home() {
               <FlameArc highlightStage={13} />
             </motion.div>
 
-            {/* Title lockup */}
+            {/* Title */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.0, duration: 0.8 }}
-              className="mt-10 mb-6"
+              className="mt-12 mb-6"
             >
-              <p className="text-amber/70 text-[11px] tracking-[0.4em] uppercase mb-3 font-light">
-                The
-              </p>
               <h1
-                className="font-display text-6xl sm:text-8xl md:text-[110px] leading-[0.85] tracking-tight"
-                style={{
-                  color: "#fef3c7",
-                }}
+                className="font-display text-6xl sm:text-8xl md:text-[120px] leading-[0.85] tracking-tight"
+                style={{ color: "#fef3c7" }}
               >
-                13th Stage
+                The 13th Stage
               </h1>
             </motion.div>
 
@@ -140,21 +130,23 @@ export default function Home() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 1.4, duration: 0.8, ease: "easeInOut" }}
-              className="w-16 h-px mx-auto mb-6"
+              className="w-16 h-px mx-auto mb-8"
               style={{ backgroundColor: "#c2410c" }}
             />
 
-            {/* Subtitle */}
+            {/* Subtitle — reworked */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
-              className="font-display italic text-lg sm:text-xl max-w-sm mx-auto leading-relaxed mb-10"
+              className="font-display text-lg sm:text-xl md:text-2xl max-w-md mx-auto leading-relaxed mb-10"
               style={{ color: "#a8a29e" }}
             >
-              The burnout framework has 12&nbsp;stages.
+              There are 12 identified stages of burnout.
               <br />
-              This is the one after.
+              <span className="italic" style={{ color: "#d6d3d1" }}>
+                The most important one is the&nbsp;13th.
+              </span>
             </motion.p>
 
             {/* CTA */}
@@ -166,10 +158,7 @@ export default function Home() {
               <button
                 onClick={handleStart}
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                style={{
-                  backgroundColor: "#c2410c",
-                  color: "#fef3c7",
-                }}
+                style={{ backgroundColor: "#c2410c", color: "#fef3c7" }}
               >
                 Take the Assessment
                 <svg
@@ -189,10 +178,7 @@ export default function Home() {
                 </svg>
               </button>
 
-              <p
-                className="text-sm mt-5 tracking-wide"
-                style={{ color: "#78716c" }}
-              >
+              <p className="text-sm mt-5 tracking-wide" style={{ color: "#78716c" }}>
                 5 minutes &middot; 28 questions &middot; completely private
               </p>
             </motion.div>
@@ -228,7 +214,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* ─── Quiz Section ─────────────────────────────────── */}
+      {/* ─── Quiz ─────────────────────────────────────────── */}
       {quizState === "active" && (
         <section
           ref={quizRef}
@@ -238,108 +224,141 @@ export default function Home() {
         </section>
       )}
 
-      {/* ─── Below-the-fold content (when idle) ───────────── */}
+      {/* ─── Below-the-fold (when idle) ───────────────────── */}
       {quizState === "idle" && (
         <>
-          {/* What is this */}
+          {/* The Framework */}
           <section className="px-5 py-20 sm:py-28 bg-warm-white">
             <div className="max-w-lg mx-auto space-y-8">
               <h2 className="font-display text-3xl sm:text-4xl text-charcoal leading-snug">
-                Burnout has 12&nbsp;stages.
+                Burnout has a shape.
                 <br />
-                <span className="text-ember">Recovery is the&nbsp;13th.</span>
+                <span className="text-ember">It also has an exit.</span>
               </h2>
               <div className="w-10 h-px bg-ember" />
               <p className="text-text-medium text-base sm:text-lg leading-relaxed">
-                In 1974, psychologist Herbert Freudenberger identified 12 stages
-                of burnout &mdash; from compulsion to collapse. The framework
-                has been used for fifty years. It stops at Stage&nbsp;12.
+                In 1974, psychologists Herbert Freudenberger and Gail North
+                mapped 12 stages of burnout &mdash; from the compulsion to prove
+                yourself, through withdrawal and depersonalization, to full
+                collapse. The framework has been used for fifty years. It stops
+                at Stage&nbsp;12.
               </p>
               <p className="text-text-medium text-base sm:text-lg leading-relaxed">
-                We added Stage&nbsp;13: the active return to yourself. Not just
-                rest. Not just time. A structured process of stabilizing,
-                resourcing, and reimagining &mdash; so you don&apos;t just
-                survive burnout, you build something different on the other side.
+                We added a 13th: the active return to yourself. Not just rest.
+                Not just time off. A structured process of stabilizing your
+                nervous system, gathering your resources, and reimagining what
+                comes next &mdash; so you don&apos;t just survive burnout, you
+                build something different on the other side.
               </p>
               <p className="text-text-medium text-base sm:text-lg leading-relaxed">
-                Take the assessment to find where you are on the arc. Five
-                minutes, completely private, and it might be the most honest
-                conversation you&apos;ve had with yourself in a while.
+                The assessment takes five minutes. It&apos;s completely private.
+                And it might be the most honest conversation you&apos;ve had
+                with yourself in a while.
               </p>
-              <button
-                onClick={handleStart}
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-charcoal text-warm-white rounded-full font-medium text-base hover:bg-deep transition-colors"
-              >
-                Start the Assessment
-              </button>
+              <div className="flex flex-wrap gap-4 pt-2">
+                <button
+                  onClick={handleStart}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-charcoal text-warm-white rounded-full font-medium text-base hover:bg-deep transition-colors"
+                >
+                  Start the Assessment
+                </button>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-1 px-7 py-3.5 border border-line text-text-medium rounded-full font-medium text-base hover:border-charcoal hover:text-charcoal transition-colors"
+                >
+                  Learn More
+                </Link>
+              </div>
             </div>
           </section>
 
-          {/* About Leah */}
+          {/* Three paths */}
           <section className="px-5 py-20 sm:py-28 bg-cream">
-            <div className="max-w-lg mx-auto space-y-6">
+            <div className="max-w-lg mx-auto space-y-8">
               <p
                 className="text-[11px] uppercase tracking-[0.25em] font-medium"
                 style={{ color: "#c2410c" }}
               >
-                About
+                Three ways in
               </p>
-              <h2 className="font-display text-3xl sm:text-4xl text-charcoal">
-                Hi, I&apos;m Leah.
+              <h2 className="font-display text-2xl sm:text-3xl text-charcoal">
+                However deep you want to go.
               </h2>
               <div className="w-10 h-px bg-ember" />
-              <p className="text-text-medium text-base leading-[1.8]">
-                I spent 20+ years in tech leadership &mdash; most recently as
-                Chief Product and Technology Officer at a travel startup during
-                the pandemic. I burned out in 2022. The kind of burnout where
-                your body screams at you to run before your mind catches up.
-              </p>
-              <p className="text-text-medium text-base leading-[1.8]">
-                Since then, I&apos;ve coached dozens of senior leaders through
-                their own versions of this story. The 13th Stage is what I wish
-                I&apos;d had when I was in the depths of it: a framework that
-                doesn&apos;t stop at &ldquo;you&apos;re burned&nbsp;out&rdquo;
-                but actually walks you through what comes next.
-              </p>
-              <a
-                href="https://leahfarmer.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-ember text-sm font-medium underline underline-offset-4 decoration-ember/30 hover:decoration-ember transition-colors pt-2"
-              >
-                leahfarmer.com &rarr;
-              </a>
+
+              <div className="space-y-6 pt-2">
+                {/* Free */}
+                <div className="flex gap-4">
+                  <div
+                    className="w-1 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: "#c2410c" }}
+                  />
+                  <div>
+                    <h3 className="font-display text-lg text-charcoal mb-1">
+                      The Free Guide
+                    </h3>
+                    <p className="text-text-medium text-sm leading-relaxed">
+                      A short overview of the 13th Stage framework. The 12
+                      stages, why recovery is the 13th, and the three phases of
+                      coming back to yourself. Take the assessment and
+                      it&apos;s delivered to your inbox.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Workbook */}
+                <div className="flex gap-4">
+                  <div
+                    className="w-1 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: "#d97706" }}
+                  />
+                  <div>
+                    <h3 className="font-display text-lg text-charcoal mb-1">
+                      The Workbook
+                      <span className="text-text-light text-sm font-body ml-2">
+                        $27
+                      </span>
+                    </h3>
+                    <p className="text-text-medium text-sm leading-relaxed">
+                      A self-guided 6-week recovery program. Exercises, somatic
+                      practices, reflection prompts, and a framework for
+                      building a life that doesn&apos;t burn you out again.
+                    </p>
+                    <Link
+                      href="/workbook"
+                      className="text-ember text-sm font-medium underline underline-offset-4 decoration-ember/30 hover:decoration-ember transition-colors mt-1 inline-block"
+                    >
+                      Learn more &rarr;
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Coaching */}
+                <div className="flex gap-4">
+                  <div
+                    className="w-1 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: "#57534e" }}
+                  />
+                  <div>
+                    <h3 className="font-display text-lg text-charcoal mb-1">
+                      Coaching with Leah
+                    </h3>
+                    <p className="text-text-medium text-sm leading-relaxed">
+                      A 6-week one-on-one program built around the workbook,
+                      tailored to your situation. For when you don&apos;t want
+                      to do this alone.
+                    </p>
+                    <Link
+                      href="/coaching"
+                      className="text-ember text-sm font-medium underline underline-offset-4 decoration-ember/30 hover:decoration-ember transition-colors mt-1 inline-block"
+                    >
+                      Learn more &rarr;
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
-
-          {/* Footer */}
-          <footer className="px-5 py-10 bg-charcoal">
-            <div className="max-w-lg mx-auto text-center space-y-5">
-              <p className="text-xs leading-relaxed" style={{ color: "#78716c" }}>
-                This assessment is for self-reflection purposes only. It is not
-                a clinical diagnostic tool and does not constitute medical
-                advice, diagnosis, or treatment. If you are experiencing a
-                mental health crisis, please contact a healthcare professional
-                or crisis service.
-              </p>
-              <div
-                className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-6 text-xs"
-                style={{ color: "#57534e" }}
-              >
-                <span>
-                  988 Suicide &amp; Crisis Lifeline: Call or text 988
-                </span>
-                <span>Samaritans: 116 123</span>
-              </div>
-              <div
-                className="w-8 h-px mx-auto"
-                style={{ backgroundColor: "#292524" }}
-              />
-              <p className="text-xs" style={{ color: "#44403c" }}>
-                &copy; 2026 Leah Farmer Coaching &amp; Advisory
-              </p>
-            </div>
-          </footer>
         </>
       )}
     </div>
