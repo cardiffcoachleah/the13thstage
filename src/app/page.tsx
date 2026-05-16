@@ -118,7 +118,7 @@ export default function Home() {
               className="mt-12 mb-6"
             >
               <h1
-                className="font-display text-6xl sm:text-8xl md:text-[120px] leading-[0.85] tracking-tight"
+                className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-[120px] leading-[0.85] tracking-tight px-2"
                 style={{ color: "#fef3c7" }}
               >
                 The 13th Stage
@@ -139,7 +139,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
-              className="font-display text-lg sm:text-xl md:text-2xl max-w-md mx-auto leading-relaxed mb-10"
+              className="font-display text-base sm:text-lg md:text-xl lg:text-2xl max-w-sm mx-auto leading-relaxed mb-10 px-2"
               style={{ color: "#a8a29e" }}
             >
               There are 12 identified stages of burnout.

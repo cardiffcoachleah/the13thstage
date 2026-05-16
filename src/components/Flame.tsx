@@ -146,13 +146,11 @@ export function FlameArc({
   className?: string;
 }) {
   return (
-    <div className={`flex items-end justify-center gap-1.5 sm:gap-2.5 ${className}`}>
+    <div className={`flex items-end justify-center gap-0.5 sm:gap-1.5 md:gap-2.5 px-2 ${className}`}>
       {Array.from({ length: 12 }, (_, i) => {
         const stage = i + 1;
         const intensity = stage / 12;
         const isHighlighted = highlightStage !== undefined && stage <= highlightStage;
-        // Bigger base size — flames more visible
-        const flameSize = 20 + intensity * 22;
         return (
           <div
             key={stage}
@@ -162,13 +160,22 @@ export function FlameArc({
               transition: "opacity 0.5s ease",
             }}
           >
-            <Flame
-              size={flameSize}
-              intensity={intensity}
-              animated={isHighlighted}
-            />
+            <div className="sm:hidden">
+              <Flame
+                size={10 + intensity * 12}
+                intensity={intensity}
+                animated={isHighlighted}
+              />
+            </div>
+            <div className="hidden sm:block">
+              <Flame
+                size={20 + intensity * 22}
+                intensity={intensity}
+                animated={isHighlighted}
+              />
+            </div>
             <span
-              className="text-[9px] sm:text-[11px] mt-1"
+              className="text-[7px] sm:text-[9px] md:text-[11px] mt-0.5 sm:mt-1"
               style={{
                 fontFamily: "var(--font-body)",
                 color: isHighlighted ? "#ea580c" : "#78716c",
@@ -179,18 +186,23 @@ export function FlameArc({
           </div>
         );
       })}
-      {/* The 13th Stage - dawn glow — bigger than the 12th */}
+      {/* The 13th Stage - dawn glow */}
       <div
-        className="flex flex-col items-center ml-3 sm:ml-4"
+        className="flex flex-col items-center ml-1 sm:ml-3 md:ml-4"
         style={{
           opacity:
             highlightStage !== undefined && highlightStage >= 13 ? 1 : 0.25,
           transition: "opacity 0.5s ease",
         }}
       >
-        <DawnGlow size={70} />
+        <div className="sm:hidden">
+          <DawnGlow size={36} />
+        </div>
+        <div className="hidden sm:block">
+          <DawnGlow size={70} />
+        </div>
         <span
-          className="text-[10px] sm:text-[12px] mt-1 font-semibold"
+          className="text-[8px] sm:text-[10px] md:text-[12px] mt-0.5 sm:mt-1 font-semibold"
           style={{ fontFamily: "var(--font-body)", color: "#d97706" }}
         >
           13
