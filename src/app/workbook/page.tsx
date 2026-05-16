@@ -14,21 +14,31 @@ export const metadata: Metadata = {
 
 export default function WorkbookPage() {
   return (
-    <div className="min-h-screen bg-warm-white pt-24 sm:pt-32">
-      <article className="px-5 pb-20 sm:pb-28">
-        <div className="max-w-lg mx-auto space-y-8">
+    <div className="min-h-screen">
+      {/* Amber/gold header band */}
+      <div
+        className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-5"
+        style={{
+          background: "linear-gradient(180deg, #92400e 0%, #b45309 100%)",
+        }}
+      >
+        <div className="max-w-lg mx-auto">
           <p
-            className="text-[11px] uppercase tracking-[0.25em] font-medium"
-            style={{ color: "#d97706" }}
+            className="text-[11px] uppercase tracking-[0.25em] font-medium mb-4"
+            style={{ color: "#fde68a" }}
           >
             Workbook
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl text-charcoal leading-tight">
+          <h1 className="font-display text-4xl sm:text-5xl leading-tight" style={{ color: "#fef3c7" }}>
             The work after
             <br />
-            <span className="text-amber">the burnout.</span>
+            <span style={{ color: "#fde68a" }}>the burnout.</span>
           </h1>
-          <div className="w-10 h-px bg-amber" />
+        </div>
+      </div>
+
+      <article className="px-5 py-12 sm:py-16 bg-warm-white">
+        <div className="max-w-lg mx-auto space-y-8">
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             The 13th Stage Workbook is a self-guided recovery program designed

@@ -14,20 +14,31 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-warm-white pt-24 sm:pt-32">
-      <article className="px-5 pb-20 sm:pb-28">
-        <div className="max-w-lg mx-auto space-y-8">
+    <div className="min-h-screen">
+      {/* Dark header band */}
+      <div
+        className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-5"
+        style={{
+          background: "linear-gradient(180deg, #1c1917 0%, #292524 100%)",
+        }}
+      >
+        <div className="max-w-lg mx-auto">
           <p
-            className="text-[11px] uppercase tracking-[0.25em] font-medium"
+            className="text-[11px] uppercase tracking-[0.25em] font-medium mb-4"
             style={{ color: "#c2410c" }}
           >
             About
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl text-charcoal leading-tight">
+          <h1 className="font-display text-4xl sm:text-5xl leading-tight" style={{ color: "#fef3c7" }}>
             I burned out. Then I built something
             <br />
-            <span className="text-ember">from what I learned.</span>
+            <span style={{ color: "#ea580c" }}>from what I learned.</span>
           </h1>
+        </div>
+      </div>
+
+      <article className="px-5 py-12 sm:py-16 bg-warm-white">
+        <div className="max-w-lg mx-auto space-y-8">
           <div className="w-10 h-px bg-ember" />
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
@@ -68,11 +79,19 @@ export default function AboutPage() {
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             I&apos;m a Professional Certified Coach (PCC) through the
-            International Coaching Federation. I work primarily with senior
-            leaders and executives in technology &mdash; product managers,
-            engineering leaders, CTOs, VPs &mdash; who are burned out,
-            recovering from burnout, or trying to build careers that don&apos;t
-            require burning out in the first place.
+            International Coaching Federation. I work with people who are
+            burned out, recovering from burnout, or trying to build careers
+            and lives that don&apos;t require burning out in the first place.
+            Many of my clients are senior leaders and executives in technology,
+            but burnout doesn&apos;t check your title or your industry. If
+            you&apos;re here, you&apos;re in the right place.
+          </p>
+
+          <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
+            I also run burnout awareness and recovery sessions for
+            organizations. I&apos;ve worked with teams at companies including
+            EA, Moderna, and Style School &mdash; bringing this framework into
+            workplaces where the culture of overwork often goes unexamined.
           </p>
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
@@ -105,7 +124,7 @@ export default function AboutPage() {
             in 2022.
           </p>
 
-          <div className="flex flex-wrap gap-4 pt-6">
+          <div className="flex flex-wrap gap-4 pt-6 pb-8">
             <Link
               href="/coaching"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-charcoal text-warm-white rounded-full font-medium text-base hover:bg-deep transition-colors"

@@ -14,21 +14,31 @@ export const metadata: Metadata = {
 
 export default function CoachingPage() {
   return (
-    <div className="min-h-screen bg-warm-white pt-24 sm:pt-32">
-      <article className="px-5 pb-20 sm:pb-28">
-        <div className="max-w-lg mx-auto space-y-8">
+    <div className="min-h-screen">
+      {/* Ember header band */}
+      <div
+        className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-5"
+        style={{
+          background: "linear-gradient(180deg, #7c2d12 0%, #9a3412 100%)",
+        }}
+      >
+        <div className="max-w-lg mx-auto">
           <p
-            className="text-[11px] uppercase tracking-[0.25em] font-medium"
-            style={{ color: "#c2410c" }}
+            className="text-[11px] uppercase tracking-[0.25em] font-medium mb-4"
+            style={{ color: "#fbbf24" }}
           >
             Coaching
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl text-charcoal leading-tight">
+          <h1 className="font-display text-4xl sm:text-5xl leading-tight" style={{ color: "#fef3c7" }}>
             You don&apos;t have to
             <br />
-            <span className="text-ember">figure this out alone.</span>
+            <span style={{ color: "#fbbf24" }}>figure this out alone.</span>
           </h1>
-          <div className="w-10 h-px bg-ember" />
+        </div>
+      </div>
+
+      <article className="px-5 py-12 sm:py-16 bg-cream">
+        <div className="max-w-lg mx-auto space-y-8">
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             The 13th Stage coaching program is six weeks of one-on-one work
@@ -156,7 +166,7 @@ export default function CoachingPage() {
           {/* CTA */}
           <div className="space-y-4 pt-4">
             <a
-              href="https://leahfarmer.com"
+              href="https://calendly.com/lfcoaching/the-13th-stage"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full text-center px-7 py-4 rounded-full font-semibold text-base transition-colors"

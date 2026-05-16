@@ -272,89 +272,97 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Three paths */}
+          {/* Three paths — as cards */}
           <section className="px-5 py-20 sm:py-28 bg-cream">
-            <div className="max-w-lg mx-auto space-y-8">
-              <p
-                className="text-[11px] uppercase tracking-[0.25em] font-medium"
-                style={{ color: "#c2410c" }}
-              >
-                Three ways in
-              </p>
-              <h2 className="font-display text-2xl sm:text-3xl text-charcoal">
-                However deep you want to go.
-              </h2>
-              <div className="w-10 h-px bg-ember" />
+            <div className="max-w-2xl mx-auto space-y-8">
+              <div className="max-w-lg">
+                <p
+                  className="text-[11px] uppercase tracking-[0.25em] font-medium"
+                  style={{ color: "#c2410c" }}
+                >
+                  Three ways in
+                </p>
+                <h2 className="font-display text-2xl sm:text-3xl text-charcoal mt-3">
+                  However deep you want to go.
+                </h2>
+              </div>
 
-              <div className="space-y-6 pt-2">
-                {/* Free */}
-                <div className="flex gap-4">
-                  <div
-                    className="w-1 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: "#c2410c" }}
-                  />
-                  <div>
-                    <h3 className="font-display text-lg text-charcoal mb-1">
-                      The Free Guide
-                    </h3>
-                    <p className="text-text-medium text-sm leading-relaxed">
-                      A short overview of the 13th Stage framework. The 12
-                      stages, why recovery is the 13th, and the three phases of
-                      coming back to yourself. Take the assessment and
-                      it&apos;s delivered to your inbox.
-                    </p>
-                  </div>
+              <div className="grid gap-5 sm:grid-cols-3">
+                {/* Free Guide */}
+                <div className="bg-warm-white border border-line rounded-2xl p-6 flex flex-col">
+                  <p
+                    className="text-[11px] uppercase tracking-[0.2em] font-medium mb-3"
+                    style={{ color: "#c2410c" }}
+                  >
+                    Free
+                  </p>
+                  <h3 className="font-display text-xl text-charcoal mb-2">
+                    The Guide
+                  </h3>
+                  <p className="text-text-medium text-sm leading-relaxed flex-1">
+                    A short overview of the 13th Stage framework. The 12 stages,
+                    why recovery is the 13th, and the three phases of coming back
+                    to yourself.
+                  </p>
+                  <button
+                    onClick={handleStart}
+                    className="mt-5 w-full py-2.5 rounded-full text-sm font-medium transition-colors"
+                    style={{ backgroundColor: "#c2410c", color: "#fef3c7" }}
+                  >
+                    Take the Assessment
+                  </button>
                 </div>
 
                 {/* Workbook */}
-                <div className="flex gap-4">
-                  <div
-                    className="w-1 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: "#d97706" }}
-                  />
-                  <div>
-                    <h3 className="font-display text-lg text-charcoal mb-1">
-                      The Workbook
-                      <span className="text-text-light text-sm font-body ml-2">
-                        $27
-                      </span>
-                    </h3>
-                    <p className="text-text-medium text-sm leading-relaxed">
-                      A self-guided 6-week recovery program. Exercises, somatic
-                      practices, reflection prompts, and a framework for
-                      building a life that doesn&apos;t burn you out again.
-                    </p>
-                    <Link
-                      href="/workbook"
-                      className="text-ember text-sm font-medium underline underline-offset-4 decoration-ember/30 hover:decoration-ember transition-colors mt-1 inline-block"
+                <div className="bg-warm-white border border-amber/40 rounded-2xl p-6 flex flex-col">
+                  <div className="flex items-center justify-between mb-3">
+                    <p
+                      className="text-[11px] uppercase tracking-[0.2em] font-medium"
+                      style={{ color: "#d97706" }}
                     >
-                      Learn more &rarr;
-                    </Link>
+                      Self-guided
+                    </p>
+                    <p className="text-charcoal text-sm font-semibold">$27</p>
                   </div>
+                  <h3 className="font-display text-xl text-charcoal mb-2">
+                    The Workbook
+                  </h3>
+                  <p className="text-text-medium text-sm leading-relaxed flex-1">
+                    A 6-week recovery program with exercises, somatic practices,
+                    and a framework for building a life that doesn&apos;t burn
+                    you out again.
+                  </p>
+                  <Link
+                    href="/workbook"
+                    className="mt-5 block w-full text-center py-2.5 rounded-full border border-charcoal text-charcoal text-sm font-medium hover:bg-charcoal hover:text-warm-white transition-colors"
+                  >
+                    Learn More
+                  </Link>
                 </div>
 
                 {/* Coaching */}
-                <div className="flex gap-4">
-                  <div
-                    className="w-1 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: "#57534e" }}
-                  />
-                  <div>
-                    <h3 className="font-display text-lg text-charcoal mb-1">
-                      Coaching with Leah
-                    </h3>
-                    <p className="text-text-medium text-sm leading-relaxed">
-                      A 6-week one-on-one program built around the workbook,
-                      tailored to your situation. For when you don&apos;t want
-                      to do this alone.
-                    </p>
-                    <Link
-                      href="/coaching"
-                      className="text-ember text-sm font-medium underline underline-offset-4 decoration-ember/30 hover:decoration-ember transition-colors mt-1 inline-block"
-                    >
-                      Learn more &rarr;
-                    </Link>
-                  </div>
+                <div className="bg-charcoal rounded-2xl p-6 flex flex-col">
+                  <p
+                    className="text-[11px] uppercase tracking-[0.2em] font-medium mb-3"
+                    style={{ color: "#fbbf24" }}
+                  >
+                    With Leah
+                  </p>
+                  <h3 className="font-display text-xl mb-2" style={{ color: "#fef3c7" }}>
+                    Coaching
+                  </h3>
+                  <p className="text-sm leading-relaxed flex-1" style={{ color: "#a8a29e" }}>
+                    6 weeks one-on-one, built around the workbook, tailored to
+                    your situation. For when you don&apos;t want to do this
+                    alone.
+                  </p>
+                  <Link
+                    href="/coaching"
+                    className="mt-5 block w-full text-center py-2.5 rounded-full text-sm font-medium transition-colors"
+                    style={{ backgroundColor: "#fbbf24", color: "#1c1917" }}
+                  >
+                    Learn More
+                  </Link>
                 </div>
               </div>
             </div>
