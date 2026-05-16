@@ -66,6 +66,8 @@ export function Flame({
   );
 }
 
+let dawnGlowCounter = 0;
+
 export function DawnGlow({
   size = 60,
   className = "",
@@ -73,6 +75,11 @@ export function DawnGlow({
   size?: number;
   className?: string;
 }) {
+  const id = ++dawnGlowCounter;
+  const g1 = `dawnGrad1_${id}`;
+  const g2 = `dawnGrad2_${id}`;
+  const g3 = `dawnGrad3_${id}`;
+
   return (
     <svg
       width={size}
@@ -85,51 +92,29 @@ export function DawnGlow({
         animation: "dawn-pulse 4s ease-in-out infinite",
       }}
     >
-      {/* Outer glow — warm peach */}
-      <circle cx="30" cy="35" r="25" fill="url(#dawnGrad1)" opacity="0.35" />
-      {/* Middle glow — gold */}
-      <circle cx="30" cy="35" r="16" fill="url(#dawnGrad2)" opacity="0.6" />
-      {/* Inner glow — hot white-gold */}
-      <circle cx="30" cy="35" r="8" fill="url(#dawnGrad3)" opacity="0.9" />
-      {/* Horizon line */}
-      <line
-        x1="2"
-        y1="42"
-        x2="58"
-        y2="42"
-        stroke="#d97706"
-        strokeWidth="0.75"
-        opacity="0.5"
-      />
-      {/* Light rays — fewer, bolder */}
+      <circle cx="30" cy="35" r="25" fill={`url(#${g1})`} opacity="0.35" />
+      <circle cx="30" cy="35" r="16" fill={`url(#${g2})`} opacity="0.6" />
+      <circle cx="30" cy="35" r="8" fill={`url(#${g3})`} opacity="0.9" />
+      <line x1="2" y1="42" x2="58" y2="42" stroke="#d97706" strokeWidth="0.75" opacity="0.5" />
       {[...Array(7)].map((_, i) => {
         const angle = -90 + (i - 3) * 20;
         const rad = (angle * Math.PI) / 180;
         const x2 = 30 + Math.cos(rad) * 24;
         const y2 = 35 + Math.sin(rad) * 24;
         return (
-          <line
-            key={i}
-            x1="30"
-            y1="35"
-            x2={x2}
-            y2={y2}
-            stroke="#fbbf24"
-            strokeWidth={i === 3 ? "1" : "0.5"}
-            opacity={i === 3 ? 0.6 : 0.3}
-          />
+          <line key={i} x1="30" y1="35" x2={x2} y2={y2} stroke="#fbbf24" strokeWidth={i === 3 ? "1" : "0.5"} opacity={i === 3 ? 0.6 : 0.3} />
         );
       })}
       <defs>
-        <radialGradient id="dawnGrad1">
+        <radialGradient id={g1}>
           <stop offset="0%" stopColor="#fed7aa" />
           <stop offset="100%" stopColor="#fed7aa" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="dawnGrad2">
+        <radialGradient id={g2}>
           <stop offset="0%" stopColor="#fbbf24" />
           <stop offset="100%" stopColor="#d97706" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="dawnGrad3">
+        <radialGradient id={g3}>
           <stop offset="0%" stopColor="#fffbeb" />
           <stop offset="100%" stopColor="#fbbf24" stopOpacity="0.2" />
         </radialGradient>
