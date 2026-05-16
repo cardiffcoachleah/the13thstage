@@ -195,7 +195,9 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
             a life that doesn&apos;t send you back through the cycle.
           </p>
           <a
-            href="#workbook"
+            href="https://buy.stripe.com/14A6oHajI71Cdbc4oz6oo07"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-6 py-2.5 rounded-full border border-charcoal text-charcoal text-sm font-medium hover:bg-charcoal hover:text-warm-white transition-colors"
           >
             Get the Workbook

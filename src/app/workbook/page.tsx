@@ -171,7 +171,9 @@ export default function WorkbookPage() {
               toward the coaching fee.
             </p>
             <a
-              href="#buy"
+              href="https://buy.stripe.com/14A6oHajI71Cdbc4oz6oo07"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-7 py-3.5 rounded-full font-semibold text-base transition-colors"
               style={{ backgroundColor: "#d97706", color: "#fef3c7" }}
             >
