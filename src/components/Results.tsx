@@ -137,57 +137,104 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
         </p>
       </motion.div>
 
-      {/* CTAs */}
+      {/* ─── What You Can Do Next ─────────────────────── */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.4 }}
-        className="space-y-4"
+        className="space-y-6"
       >
-        <p className="text-text-dark text-base leading-relaxed">
-          {band.ctaPrimary}
-        </p>
+        <h3 className="font-display text-xl sm:text-2xl text-charcoal">
+          What you can do next
+        </h3>
 
-        {/* Primary action - free guide */}
-        <a
-          href="#guide"
-          className="block w-full text-center py-3.5 rounded-full bg-ember text-warm-white font-medium text-base hover:bg-sienna transition-colors"
-        >
-          Get the Free 13th Stage Guide
-        </a>
-
-        {band.ctaSecondary && (
-          <p className="text-text-medium text-sm leading-relaxed pt-2">
-            {band.ctaSecondary}
+        {/* Card 1: Free Guide */}
+        <div className="border border-line rounded-2xl p-6 space-y-3">
+          <div className="flex items-center justify-between">
+            <p
+              className="text-[11px] uppercase tracking-[0.2em] font-medium"
+              style={{ color: "#c2410c" }}
+            >
+              Free
+            </p>
+          </div>
+          <h4 className="font-display text-lg text-charcoal">
+            The 13th Stage Guide
+          </h4>
+          <p className="text-text-medium text-sm leading-relaxed">
+            A short overview of the framework &mdash; the 12 stages, why
+            recovery is Stage 13, and the three phases of coming back to
+            yourself. Delivered to your inbox.
           </p>
-        )}
-
-        {/* Workbook CTA */}
-        <a
-          href="#workbook"
-          className="block w-full text-center py-3.5 rounded-full border border-charcoal text-charcoal font-medium text-base hover:bg-charcoal hover:text-warm-white transition-colors"
-        >
-          Get the Workbook &mdash; $27
-        </a>
-
-        {band.ctaTertiary && (
-          <p className="text-text-medium text-sm leading-relaxed pt-2">
-            {band.ctaTertiary}
-          </p>
-        )}
-
-        {/* Coaching CTA - only for middle+ */}
-        {(band.id === "middle" ||
-          band.id === "serious" ||
-          band.id === "crisis") && (
           <a
-            href="https://leahfarmer.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full text-center py-3 text-ember font-medium text-sm underline underline-offset-4 hover:text-sienna transition-colors"
+            href="#guide"
+            className="inline-block px-6 py-2.5 rounded-full text-sm font-medium transition-colors"
+            style={{ backgroundColor: "#c2410c", color: "#fef3c7" }}
           >
-            Learn about the 6-week coaching program
+            Get the Free Guide
           </a>
+        </div>
+
+        {/* Card 2: Workbook */}
+        <div className="border border-line rounded-2xl p-6 space-y-3">
+          <div className="flex items-center justify-between">
+            <p
+              className="text-[11px] uppercase tracking-[0.2em] font-medium"
+              style={{ color: "#d97706" }}
+            >
+              Self-guided
+            </p>
+            <p className="text-text-medium text-sm font-medium">$27</p>
+          </div>
+          <h4 className="font-display text-lg text-charcoal">
+            The 13th Stage Workbook
+          </h4>
+          <p className="text-text-medium text-sm leading-relaxed">
+            A 6-week recovery program you work through on your own. Exercises,
+            somatic practices, reflection prompts, and a framework for building
+            a life that doesn&apos;t send you back through the cycle.
+          </p>
+          <a
+            href="#workbook"
+            className="inline-block px-6 py-2.5 rounded-full border border-charcoal text-charcoal text-sm font-medium hover:bg-charcoal hover:text-warm-white transition-colors"
+          >
+            Get the Workbook
+          </a>
+        </div>
+
+        {/* Card 3: Coaching */}
+        <div className="border border-line rounded-2xl p-6 space-y-3">
+          <div className="flex items-center justify-between">
+            <p
+              className="text-[11px] uppercase tracking-[0.2em] font-medium"
+              style={{ color: "#57534e" }}
+            >
+              With Leah
+            </p>
+          </div>
+          <h4 className="font-display text-lg text-charcoal">
+            6-Week Coaching Program
+          </h4>
+          <p className="text-text-medium text-sm leading-relaxed">
+            Work through the 13th Stage framework one-on-one with Leah &mdash;
+            weekly or biweekly sessions built around the workbook, tailored to
+            your situation. For when you don&apos;t want to do this alone.
+          </p>
+          <a
+            href="/coaching"
+            className="inline-block px-6 py-2.5 rounded-full border border-charcoal text-charcoal text-sm font-medium hover:bg-charcoal hover:text-warm-white transition-colors"
+          >
+            Book a Discovery Call
+          </a>
+        </div>
+
+        {/* Band-specific note */}
+        {(band.id === "serious" || band.id === "crisis") && (
+          <p className="text-text-medium text-sm leading-relaxed italic pt-2">
+            A coach or a workbook can be part of your recovery &mdash; but
+            please also consider talking to a therapist or doctor. You deserve
+            professional support.
+          </p>
         )}
       </motion.div>
 
