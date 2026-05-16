@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Dark end — true black with warm undertone, not blue */
+  --color-charcoal: #1c1917;
+  --color-deep: #292524;
+  --color-navy: #1c1917;
+
+  /* The fire spectrum — hotter, more saturated, more range */
+  --color-ember: #c2410c;
+  --color-flame: #ea580c;
+  --color-amber: #d97706;
+  --color-sienna: #9a3412;
+  --color-rust: #7c2d12;
+
+  /* The dawn spectrum — the 13th stage light */
+  --color-gold: #fbbf24;
+  --color-dawn: #fde68a;
+  --color-dawn-glow: #fef3c7;
+  --color-peach: #fed7aa;
+  --color-rose-dawn: #fecdd3;
+
+  /* Light surfaces */
+  --color-cream: #fdf8f0;
+  --color-light-amber: #fef3e2;
+  --color-warm-white: #fefcf8;
+
+  /* Text */
+  --color-text-dark: #1c1917;
+  --color-text-medium: #57534e;
+  --color-text-light: #a8a29e;
+  --color-line: #d6d3d1;
+
+  /* Typography — Instrument Serif is warmer, more editorial than Playfair */
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  background-color: var(--color-warm-white);
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+/* Flame flicker — more dramatic sway */
+@keyframes flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+  15% { transform: scaleY(1.04) scaleX(0.96); opacity: 0.9; }
+  40% { transform: scaleY(0.96) scaleX(1.03); opacity: 1; }
+  65% { transform: scaleY(1.03) scaleX(0.97); opacity: 0.92; }
+  85% { transform: scaleY(0.98) scaleX(1.01); opacity: 0.97; }
+}
+
+/* Dawn glow — slower, more reverent */
+@keyframes dawn-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* Ember glow on hover for buttons */
+@keyframes ember-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(194, 65, 12, 0); }
+  50% { box-shadow: 0 0 24px 4px rgba(194, 65, 12, 0.15); }
+}
