@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-function LogoIcon({ light }: { light?: boolean }) {
-  const color = light ? "#fbbf24" : "#d97706";
+function LogoIcon() {
   return (
     <svg
       width="22"
@@ -14,16 +13,13 @@ function LogoIcon({ light }: { light?: boolean }) {
       xmlns="http://www.w3.org/2000/svg"
       className="inline-block -mt-0.5"
     >
-      {/* Sunrise glow */}
-      <circle cx="11" cy="13" r="8" fill={color} opacity="0.15" />
-      <circle cx="11" cy="13" r="5" fill={color} opacity="0.3" />
-      <circle cx="11" cy="13" r="2.5" fill={color} opacity="0.6" />
-      {/* Horizon */}
-      <line x1="2" y1="15" x2="20" y2="15" stroke={color} strokeWidth="0.75" opacity="0.5" />
-      {/* Rays */}
-      <line x1="11" y1="13" x2="11" y2="4" stroke={color} strokeWidth="0.5" opacity="0.4" />
-      <line x1="11" y1="13" x2="5" y2="6" stroke={color} strokeWidth="0.5" opacity="0.3" />
-      <line x1="11" y1="13" x2="17" y2="6" stroke={color} strokeWidth="0.5" opacity="0.3" />
+      <circle cx="11" cy="13" r="8" fill="#fbbf24" opacity="0.15" />
+      <circle cx="11" cy="13" r="5" fill="#fbbf24" opacity="0.3" />
+      <circle cx="11" cy="13" r="2.5" fill="#fbbf24" opacity="0.6" />
+      <line x1="2" y1="15" x2="20" y2="15" stroke="#fbbf24" strokeWidth="0.75" opacity="0.5" />
+      <line x1="11" y1="13" x2="11" y2="4" stroke="#fbbf24" strokeWidth="0.5" opacity="0.4" />
+      <line x1="11" y1="13" x2="5" y2="6" stroke="#fbbf24" strokeWidth="0.5" opacity="0.3" />
+      <line x1="11" y1="13" x2="17" y2="6" stroke="#fbbf24" strokeWidth="0.5" opacity="0.3" />
     </svg>
   );
 }
@@ -37,19 +33,15 @@ export function Nav() {
     { href: "/about", label: "About" },
   ];
 
-  const isHome = pathname === "/";
-
+  // Every page has a dark or colored header band, so nav is always light
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 px-5 py-5 flex items-center justify-between max-w-3xl mx-auto">
       <Link
         href="/"
-        className={`flex items-center gap-2 font-display text-lg tracking-tight ${
-          isHome
-            ? "text-dawn-glow/80 hover:text-dawn-glow"
-            : "text-charcoal hover:text-ember"
-        } transition-colors`}
+        className="flex items-center gap-2 font-display text-lg tracking-tight transition-colors"
+        style={{ color: "rgba(254,243,199,0.85)" }}
       >
-        <LogoIcon light={isHome} />
+        <LogoIcon />
         The 13th Stage
       </Link>
       <div className="flex items-center gap-5 sm:gap-7">
@@ -57,15 +49,13 @@ export function Nav() {
           <Link
             key={link.href}
             href={link.href}
-            className={`text-sm transition-colors ${
-              pathname === link.href
-                ? isHome
-                  ? "text-dawn-glow font-medium"
-                  : "text-ember font-medium"
-                : isHome
-                  ? "text-dawn-glow/50 hover:text-dawn-glow/80"
-                  : "text-text-light hover:text-text-dark"
-            }`}
+            className="text-sm transition-colors"
+            style={{
+              color:
+                pathname === link.href
+                  ? "#fef3c7"
+                  : "rgba(254,243,199,0.5)",
+            }}
           >
             {link.label}
           </Link>

@@ -147,8 +147,8 @@ export default function CoachingPage() {
             ready to do the work.
           </p>
 
-          {/* Pricing */}
-          <div className="bg-cream rounded-2xl p-6 sm:p-8 space-y-4 mt-4">
+          {/* Pricing + CTA card */}
+          <div className="bg-warm-white border border-line rounded-2xl p-6 sm:p-8 space-y-5 mt-4">
             <h3 className="font-display text-xl text-charcoal">Investment</h3>
             <p className="text-3xl font-display text-charcoal">
               $895
@@ -161,15 +161,11 @@ export default function CoachingPage() {
               who need it &mdash; money should never be the reason you
               don&apos;t get help. Reach out and we&apos;ll figure it out.
             </p>
-          </div>
-
-          {/* CTA */}
-          <div className="space-y-4 pt-4">
             <a
               href="https://calendly.com/lfcoaching/the-13th-stage"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full text-center px-7 py-4 rounded-full font-semibold text-base transition-colors"
+              className="block w-full text-center px-7 py-3.5 rounded-full font-semibold text-base transition-colors"
               style={{ backgroundColor: "#c2410c", color: "#fef3c7" }}
             >
               Book a Free Discovery Call

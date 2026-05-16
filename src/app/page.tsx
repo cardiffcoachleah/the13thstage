@@ -289,7 +289,7 @@ export default function Home() {
 
               <div className="grid gap-5 sm:grid-cols-3">
                 {/* Free Guide */}
-                <div className="bg-warm-white border border-line rounded-2xl p-6 flex flex-col">
+                <div className="bg-warm-white rounded-2xl p-6 flex flex-col" style={{ borderTop: "3px solid #c2410c" }}>
                   <p
                     className="text-[11px] uppercase tracking-[0.2em] font-medium mb-3"
                     style={{ color: "#c2410c" }}
@@ -314,7 +314,7 @@ export default function Home() {
                 </div>
 
                 {/* Workbook */}
-                <div className="bg-warm-white border border-amber/40 rounded-2xl p-6 flex flex-col">
+                <div className="bg-warm-white rounded-2xl p-6 flex flex-col" style={{ borderTop: "3px solid #d97706" }}>
                   <div className="flex items-center justify-between mb-3">
                     <p
                       className="text-[11px] uppercase tracking-[0.2em] font-medium"
@@ -334,24 +334,25 @@ export default function Home() {
                   </p>
                   <Link
                     href="/workbook"
-                    className="mt-5 block w-full text-center py-2.5 rounded-full border border-charcoal text-charcoal text-sm font-medium hover:bg-charcoal hover:text-warm-white transition-colors"
+                    className="mt-5 block w-full text-center py-2.5 rounded-full text-sm font-medium transition-colors"
+                    style={{ backgroundColor: "#d97706", color: "#fef3c7" }}
                   >
                     Learn More
                   </Link>
                 </div>
 
                 {/* Coaching */}
-                <div className="bg-charcoal rounded-2xl p-6 flex flex-col">
+                <div className="bg-warm-white rounded-2xl p-6 flex flex-col" style={{ borderTop: "3px solid #9a3412" }}>
                   <p
                     className="text-[11px] uppercase tracking-[0.2em] font-medium mb-3"
-                    style={{ color: "#fbbf24" }}
+                    style={{ color: "#9a3412" }}
                   >
                     With Leah
                   </p>
-                  <h3 className="font-display text-xl mb-2" style={{ color: "#fef3c7" }}>
+                  <h3 className="font-display text-xl text-charcoal mb-2">
                     Coaching
                   </h3>
-                  <p className="text-sm leading-relaxed flex-1" style={{ color: "#a8a29e" }}>
+                  <p className="text-text-medium text-sm leading-relaxed flex-1">
                     6 weeks one-on-one, built around the workbook, tailored to
                     your situation. For when you don&apos;t want to do this
                     alone.
@@ -359,7 +360,7 @@ export default function Home() {
                   <Link
                     href="/coaching"
                     className="mt-5 block w-full text-center py-2.5 rounded-full text-sm font-medium transition-colors"
-                    style={{ backgroundColor: "#fbbf24", color: "#1c1917" }}
+                    style={{ backgroundColor: "#9a3412", color: "#fef3c7" }}
                   >
                     Learn More
                   </Link>
