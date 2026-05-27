@@ -105,6 +105,21 @@ export async function POST(req: NextRequest) {
           { status: 500 }
         );
       }
+
+      // Notify Leah of the sale and delivery
+      await getResend().emails.send({
+        from: "The 13th Stage <hello@the13thstage.com>",
+        to: "leah@leahfarmer.com",
+        subject: `Workbook sold: ${email}`,
+        html: `
+          <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: #1c1917;">
+            <p style="font-size: 15px;"><strong>New workbook purchase!</strong></p>
+            <p style="font-size: 14px; color: #57534e;">Customer: ${email}</p>
+            <p style="font-size: 14px; color: #57534e;">Name: ${session.customer_details?.name || "not provided"}</p>
+            <p style="font-size: 14px; color: #57534e;">Workbook PDF delivered successfully.</p>
+          </div>
+        `,
+      });
     }
 
     return NextResponse.json({ received: true });
