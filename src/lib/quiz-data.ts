@@ -49,7 +49,7 @@ export const contextQuestions: ContextQuestion[] = [
       { label: "A few months", value: "months" },
       { label: "Six months to a year", value: "half_year" },
       { label: "Over a year", value: "over_year" },
-      { label: "I\u2019m not sure \u2014 it crept up on me", value: "unsure" },
+      { label: "I\u2019m not sure, it crept up on me", value: "unsure" },
     ],
   },
   {
@@ -82,7 +82,7 @@ export const contextQuestions: ContextQuestion[] = [
 // Stage mapping is invisible to the user
 
 export const quizQuestions: QuizQuestion[] = [
-  // Early stages first — most people will nod along
+  // Early stages first, most people will nod along
   {
     id: "q1",
     statement:
@@ -98,7 +98,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "q2",
     statement:
-      'I have trouble saying "that\u2019s good enough" \u2014 there\u2019s always more I could do.',
+      'I have trouble saying "that\u2019s good enough". There\u2019s always more I could do.',
     stage: 1,
   },
   {
@@ -120,7 +120,7 @@ export const quizQuestions: QuizQuestion[] = [
     stage: 3,
   },
 
-  // Middle stages — the discomfort deepens
+  // Middle stages, the discomfort deepens
   {
     id: "q7",
     statement:
@@ -158,7 +158,7 @@ export const quizQuestions: QuizQuestion[] = [
     stage: 6,
   },
 
-  // Later stages — the gut-punch territory
+  // Later stages, the gut-punch territory
   {
     id: "q13",
     statement:
@@ -184,7 +184,7 @@ export const quizQuestions: QuizQuestion[] = [
     stage: 8,
   },
 
-  // Deep stages — where recognition hits hard
+  // Deep stages, where recognition hits hard
   {
     id: "q17",
     statement:
@@ -210,7 +210,7 @@ export const quizQuestions: QuizQuestion[] = [
     stage: 10,
   },
 
-  // Final stages — the ones that should prompt immediate action
+  // Final stages, the ones that should prompt immediate action
   {
     id: "q21",
     statement: "I struggle to imagine things getting meaningfully better.",
@@ -231,7 +231,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "q24",
     statement:
-      "My body is telling me something is seriously wrong \u2014 through exhaustion, illness, pain, or breakdown.",
+      "My body is telling me something is seriously wrong: through exhaustion, illness, pain, or breakdown.",
     stage: 12,
   },
 ];
@@ -273,11 +273,11 @@ export const scoreBands: ScoreBand[] = [
     range: [24, 48],
     headline: "You\u2019re catching this early. That matters.",
     description:
-      "Your score suggests you\u2019re in the early stages of the burnout arc \u2014 the territory of proving, overworking, and starting to neglect your own needs. These stages are invisible because they look like success from the outside. Catching them now is the best possible time to intervene.",
+      "Your score suggests you\u2019re in the early stages of the burnout arc, the territory of proving, overworking, and starting to neglect your own needs. These stages are invisible because they look like success from the outside. Catching them now is the best possible time to intervene.",
     clusterNote:
       "your signals are concentrated in the early stages, where ambition and overwork are starting to erode your foundation",
     ctaPrimary:
-      "You\u2019re in the best possible position to get ahead of this. Here\u2019s a free guide to the 13th Stage \u2014 our framework for what recovery actually looks like.",
+      "You\u2019re in the best possible position to get ahead of this. Here\u2019s a free guide to the 13th Stage, our framework for what recovery actually looks like.",
     ctaSecondary:
       "Want to go deeper? The 13th Stage Workbook walks you through the full recovery process.",
     showCrisisResources: false,
@@ -288,11 +288,11 @@ export const scoreBands: ScoreBand[] = [
     range: [49, 72],
     headline: "You\u2019re in the middle of it. You\u2019re not imagining things.",
     description:
-      "Your score places you in the middle stages \u2014 where work has started to eclipse everything else, where cynicism and withdrawal are creeping in, and where the people around you may be noticing changes you can\u2019t fully see yourself. This is the zone where most people first realize something is wrong.",
+      "Your score places you in the middle stages, where work has started to eclipse everything else, where cynicism and withdrawal are creeping in, and where the people around you may be noticing changes you can\u2019t fully see yourself. This is the zone where most people first realize something is wrong.",
     clusterNote:
       "your signals are concentrated in the middle stages, where identity has merged with work and withdrawal has begun",
     ctaPrimary:
-      "Here\u2019s a free guide to the 13th Stage \u2014 the recovery framework we\u2019ve built for exactly this moment.",
+      "Here\u2019s a free guide to the 13th Stage, the recovery framework we\u2019ve built for exactly this moment.",
     ctaSecondary:
       "The 13th Stage Workbook is a self-guided recovery program with exercises, somatic practices, and a framework for building a life that doesn\u2019t send you back through the cycle.",
     ctaTertiary:
@@ -305,11 +305,11 @@ export const scoreBands: ScoreBand[] = [
     range: [73, 96],
     headline: "This is real, and it deserves your attention.",
     description:
-      "Your score indicates you\u2019re experiencing significant burnout \u2014 the stages where depersonalization, inner emptiness, and exhaustion start to dominate. Your system is under real strain. This isn\u2019t something to push through. It\u2019s something to address.",
+      "Your score indicates you\u2019re experiencing significant burnout, the stages where depersonalization, inner emptiness, and exhaustion start to dominate. Your system is under real strain. This isn\u2019t something to push through. It\u2019s something to address.",
     clusterNote:
       "your signals are concentrated in the advanced stages, where disconnection and exhaustion are deeply affecting your daily experience",
     ctaPrimary:
-      "Here\u2019s the guide, and I\u2019d genuinely encourage a conversation \u2014 with a coach, a therapist, or someone you trust. You don\u2019t have to figure this out alone.",
+      "Here\u2019s the guide, and I\u2019d genuinely encourage a conversation, with a coach, a therapist, or someone you trust. You don\u2019t have to figure this out alone.",
     ctaSecondary:
       "Leah\u2019s six-week coaching program is designed for exactly this moment. But a therapist or doctor may also be an important part of your recovery.",
     ctaTertiary:
@@ -322,7 +322,7 @@ export const scoreBands: ScoreBand[] = [
     range: [97, 120],
     headline: "You\u2019ve been carrying too much for too long.",
     description:
-      "Your score suggests you\u2019re at or near the far end of the burnout arc. This is the territory of physical and emotional breakdown. Please hear this clearly: you are not weak for being here. But you need support \u2014 professional support \u2014 and you deserve it.",
+      "Your score suggests you\u2019re at or near the far end of the burnout arc. This is the territory of physical and emotional breakdown. Please hear this clearly: you are not weak for being here. But you need support, professional support, and you deserve it.",
     clusterNote:
       "your signals are at the most advanced stages of the burnout arc, indicating your system is in crisis",
     ctaPrimary:

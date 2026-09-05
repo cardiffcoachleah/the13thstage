@@ -29,27 +29,28 @@ export function Nav() {
 
   const links = [
     { href: "/workbook", label: "Workbook" },
+    { href: "/tapping", label: "Tapping" },
     { href: "/coaching", label: "Coaching" },
     { href: "/about", label: "About" },
   ];
 
-  // Every page has a dark or colored header band, so nav is always light
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 px-5 py-5 flex items-center justify-between max-w-3xl mx-auto">
+    <nav className="absolute top-0 left-0 right-0 z-50 px-4 sm:px-5 py-5 flex items-center justify-between max-w-3xl mx-auto">
       <Link
         href="/"
-        className="flex items-center gap-2 font-display text-lg tracking-tight transition-colors"
+        className="flex items-center gap-2 font-display text-base sm:text-lg tracking-tight transition-colors"
         style={{ color: "rgba(254,243,199,0.85)" }}
       >
         <LogoIcon />
-        The 13th Stage
+        <span className="hidden sm:inline">The 13th Stage</span>
+        <span className="sm:hidden">13th Stage</span>
       </Link>
-      <div className="flex items-center gap-5 sm:gap-7">
+      <div className="flex items-center gap-3 sm:gap-6">
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="text-sm transition-colors"
+            className="text-xs sm:text-sm transition-colors"
             style={{
               color:
                 pathname === link.href

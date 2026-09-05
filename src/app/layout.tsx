@@ -6,11 +6,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://the13thstage.com"),
   title: {
-    default: "The 13th Stage — Burnout Assessment & Recovery Framework",
+    default: "The 13th Stage | Burnout Assessment and Recovery Framework",
     template: "%s | The 13th Stage",
   },
   description:
-    "There are 12 identified stages of burnout. The most important one is the 13th. Take the free assessment to find where you are — and discover the path back to yourself.",
+    "There are 12 identified stages of burnout. The most important one is the 13th. Take the free assessment to find where you are and discover the path back to yourself.",
   keywords: [
     "burnout assessment",
     "burnout quiz",
@@ -23,13 +23,15 @@ export const metadata: Metadata = {
     "leadership burnout",
     "burnout coaching",
     "burnout workbook",
+    "burnout tapping",
+    "EFT burnout",
     "stress recovery",
     "the 13th stage",
   ],
   authors: [{ name: "Leah Farmer", url: "https://leahfarmer.com" }],
   creator: "Leah Farmer Coaching & Advisory",
   openGraph: {
-    title: "The 13th Stage — Burnout Assessment & Recovery",
+    title: "The 13th Stage | Burnout Assessment and Recovery",
     description:
       "There are 12 identified stages of burnout. The most important one is the 13th. Take the free assessment.",
     url: "https://the13thstage.com",
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The 13th Stage — Burnout Assessment",
+    title: "The 13th Stage | Burnout Assessment",
     description:
       "There are 12 identified stages of burnout. The most important one is the 13th.",
     creator: "@leahfarmer",

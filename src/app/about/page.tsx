@@ -43,7 +43,7 @@ export default function AboutPage() {
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             I&apos;m Leah Farmer. I spent more than twenty years in technology
-            leadership &mdash; building products, shipping software, leading
+            leadership, building products, shipping software, leading
             engineering and product teams through every kind of pressure the
             industry can throw at you. I loved the work. And the work nearly
             broke me.
@@ -51,7 +51,7 @@ export default function AboutPage() {
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             In 2022, I burned out. Not the I-need-a-vacation kind. The kind
-            where your body makes the decision your mind won&apos;t &mdash;
+            where your body makes the decision your mind won&apos;t.
             where every system screams at you to stop and you finally listen.
             I walked away from a senior executive role because staying would
             have cost me more than any job is worth.
@@ -66,7 +66,7 @@ export default function AboutPage() {
           </p>
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
-            That process &mdash; that slow, deliberate return to myself &mdash;
+            That process, that slow, deliberate return to myself,
             is what became The 13th Stage. Not a book I read. Not a theory I
             studied. A framework I lived, and then refined by coaching dozens
             of other senior leaders through their own versions of it.
@@ -90,13 +90,13 @@ export default function AboutPage() {
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             I also run burnout awareness and recovery sessions for
             organizations. I&apos;ve worked with teams at companies including
-            EA, Moderna, and Style School &mdash; bringing this framework into
+            EA, Moderna, and Style School, bringing this framework into
             workplaces where the culture of overwork often goes unexamined.
           </p>
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             My coaching draws on twenty years of lived experience in the rooms
-            where burnout happens &mdash; the reorgs, the impossible deadlines,
+            where burnout happens: the reorgs, the impossible deadlines,
             the leaders who confuse intensity with excellence, the cultures that
             reward self-sacrifice and punish boundaries. I know what it feels
             like to be the person holding everything together while quietly
@@ -116,7 +116,7 @@ export default function AboutPage() {
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             The 13th Stage is that path. It&apos;s a three-phase recovery
-            framework &mdash; Stabilize, Resource, Reimagine &mdash; built from
+            framework: Stabilize, Resource, Reimagine. Built from
             what actually works when you&apos;re rebuilding from the ground up.
             It&apos;s informed by neuroscience, somatic practice, and the
             patterns I&apos;ve seen across dozens of coaching engagements.

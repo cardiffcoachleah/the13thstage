@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Coaching — 6-Week Burnout Recovery Program",
+  title: "Coaching | 6-Week Burnout Recovery Program",
   description:
     "Work one-on-one with Leah Farmer through a 6-week coaching program built around The 13th Stage framework. For senior leaders recovering from burnout.",
   openGraph: {
@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 export default function CoachingPage() {
   return (
     <div className="min-h-screen">
-      {/* Ember header band */}
       <div
         className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-5"
         style={{
@@ -42,9 +41,9 @@ export default function CoachingPage() {
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             The 13th Stage coaching program is six weeks of one-on-one work
-            built around the recovery framework. We meet weekly or biweekly
-            &mdash; whatever pace fits where you are right now &mdash; and walk
-            through Stabilize, Resource, and Reimagine together, tailored to
+            built around the recovery framework. We meet weekly or biweekly,
+            whatever pace fits where you are right now. Together we walk
+            through Stabilize, Resource, and Reimagine, tailored to
             your specific situation.
           </p>
 
@@ -71,8 +70,8 @@ export default function CoachingPage() {
                   6 coaching sessions
                 </h3>
                 <p className="text-text-medium text-sm leading-relaxed">
-                  50 minutes each, via video. Weekly or biweekly &mdash; we
-                  decide together based on what you need.
+                  50 minutes each, via video. Weekly or biweekly, decided
+                  together based on what you need.
                 </p>
               </div>
             </div>
@@ -117,11 +116,31 @@ export default function CoachingPage() {
               />
               <div>
                 <h3 className="text-charcoal font-semibold mb-1">
+                  Tapping when it helps
+                </h3>
+                <p className="text-text-medium text-sm leading-relaxed">
+                  Some of what surfaces doesn&apos;t shift by talking about it.
+                  When we hit that, we tap on it instead. EFT works on the
+                  stress response directly rather than through analysis, which
+                  makes it useful for the things you understand perfectly and
+                  still can&apos;t put down. No experience needed, and we only
+                  use it when it&apos;s the right tool.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <div
+                className="w-1 rounded-full flex-shrink-0"
+                style={{ backgroundColor: "#c2410c" }}
+              />
+              <div>
+                <h3 className="text-charcoal font-semibold mb-1">
                   Structured framework
                 </h3>
                 <p className="text-text-medium text-sm leading-relaxed">
-                  We follow the three-phase 13th Stage recovery path &mdash;
-                  Stabilize, Resource, Reimagine &mdash; adapted to where you
+                  We follow the three-phase 13th Stage recovery path:
+                  Stabilize, Resource, Reimagine. Adapted to where you
                   are and what you need.
                 </p>
               </div>
@@ -134,8 +153,8 @@ export default function CoachingPage() {
           <div className="w-10 h-px bg-ember" />
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
-            This program is designed for senior leaders and executives &mdash;
-            particularly in technology &mdash; who are burned out, recovering
+            This program is designed for senior leaders and executives,
+            particularly in technology, who are burned out, recovering
             from burnout, or trying to rebuild after burnout. It&apos;s for
             people who are used to being the one who holds it together, and who
             need a space where they don&apos;t have to.
@@ -151,14 +170,11 @@ export default function CoachingPage() {
           <div className="bg-warm-white border border-line rounded-2xl p-6 sm:p-8 space-y-5 mt-4">
             <h3 className="font-display text-xl text-charcoal">Investment</h3>
             <p className="text-3xl font-display text-charcoal">
-              $895
-              <span className="text-text-light text-base font-body ml-2">
-                USD
-              </span>
+              $895 USD / &pound;660
             </p>
             <p className="text-text-medium text-sm leading-relaxed">
               Payment plans are available. Sliding scale is available for those
-              who need it &mdash; money should never be the reason you
+              who need it. Money should never be the reason you
               don&apos;t get help. Reach out and we&apos;ll figure it out.
             </p>
             <a
@@ -182,14 +198,21 @@ export default function CoachingPage() {
               Not ready for coaching? That&apos;s okay.
             </p>
             <p className="text-text-medium text-sm leading-relaxed">
-              The{" "}
+              A{" "}
+              <Link
+                href="/tapping"
+                className="text-ember underline underline-offset-4 decoration-ember/30 hover:decoration-ember"
+              >
+                tapping session
+              </Link>{" "}
+              is a single session you can book anytime. The{" "}
               <Link
                 href="/workbook"
                 className="text-ember underline underline-offset-4 decoration-ember/30 hover:decoration-ember"
               >
                 13th Stage Workbook
               </Link>{" "}
-              walks you through the same framework on your own. And the{" "}
+              walks you through the framework on your own. And the{" "}
               <Link
                 href="/"
                 className="text-ember underline underline-offset-4 decoration-ember/30 hover:decoration-ember"

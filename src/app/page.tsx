@@ -7,6 +7,11 @@ import { Quiz } from "@/components/Quiz";
 import { Results } from "@/components/Results";
 import { FlameArc } from "@/components/Flame";
 import { getSupabase } from "@/lib/supabase";
+import {
+  TAPPING_CARD_PRICE,
+  TAPPING_REDUCED,
+  TAPPING_REDUCED_END,
+} from "@/lib/tapping";
 import type { QuizAnswers, QuizResult } from "@/lib/quiz-data";
 
 export default function Home() {
@@ -54,7 +59,6 @@ export default function Home() {
       console.error("Failed to save quiz results:", err);
     }
 
-    // Send the free guide via email
     if (email) {
       try {
         await fetch("/api/send-guide", {
@@ -66,7 +70,6 @@ export default function Home() {
         console.error("Failed to send guide:", err);
       }
 
-      // Sync to Mailchimp if they opted in
       if (newsletterOptIn) {
         try {
           await fetch("/api/mailchimp-sync", {
@@ -93,17 +96,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* ─── Results View ─────────────────────────────────── */}
       {quizState === "complete" && result && answers && (
         <section className="px-5 pt-24 sm:pt-32 pb-12">
           <Results result={result} answers={answers} onRetake={handleRetake} />
         </section>
       )}
 
-      {/* ─── Hero ─────────────────────────────────────────── */}
       {quizState !== "complete" && (
         <section className="relative min-h-[92vh] flex flex-col items-center justify-center px-5 pt-16 overflow-hidden">
-          {/* Background */}
           <div
             className="absolute inset-0 -z-10"
             style={{
@@ -131,7 +131,6 @@ export default function Home() {
             transition={{ duration: 1.2 }}
             className="text-center max-w-2xl mx-auto"
           >
-            {/* Flame arc — bigger */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -140,7 +139,6 @@ export default function Home() {
               <FlameArc highlightStage={13} />
             </motion.div>
 
-            {/* Title */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -155,7 +153,6 @@ export default function Home() {
               </h1>
             </motion.div>
 
-            {/* Thin rule */}
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
@@ -164,7 +161,6 @@ export default function Home() {
               style={{ backgroundColor: "#c2410c" }}
             />
 
-            {/* Subtitle — reworked */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -179,7 +175,6 @@ export default function Home() {
               </span>
             </motion.p>
 
-            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -214,7 +209,6 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Scroll hint */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.3 }}
@@ -244,7 +238,6 @@ export default function Home() {
         </section>
       )}
 
-      {/* ─── Quiz ─────────────────────────────────────────── */}
       {quizState === "active" && (
         <section
           ref={quizRef}
@@ -254,7 +247,6 @@ export default function Home() {
         </section>
       )}
 
-      {/* ─── Below-the-fold (when idle) ───────────────────── */}
       {quizState === "idle" && (
         <>
           {/* The Framework */}
@@ -268,7 +260,7 @@ export default function Home() {
               <div className="w-10 h-px bg-ember" />
               <p className="text-text-medium text-base sm:text-lg leading-relaxed">
                 In 1974, psychologists Herbert Freudenberger and Gail North
-                mapped 12 stages of burnout &mdash; from the compulsion to prove
+                mapped 12 stages of burnout, from the compulsion to prove
                 yourself, through withdrawal and depersonalization, to full
                 collapse. The framework has been used for fifty years. It stops
                 at Stage&nbsp;12.
@@ -277,7 +269,7 @@ export default function Home() {
                 We added a 13th: the active return to yourself. Not just rest.
                 Not just time off. A structured process of stabilizing your
                 nervous system, gathering your resources, and reimagining what
-                comes next &mdash; so you don&apos;t just survive burnout, you
+                comes next so you don&apos;t just survive burnout. You
                 build something different on the other side.
               </p>
               <p className="text-text-medium text-base sm:text-lg leading-relaxed">
@@ -302,7 +294,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Three paths — as cards */}
+          {/* Three cards: Guide, Workbook, Tapping */}
           <section className="px-5 py-20 sm:py-28 bg-cream">
             <div className="max-w-2xl mx-auto space-y-8">
               <div className="max-w-lg">
@@ -371,24 +363,30 @@ export default function Home() {
                   </Link>
                 </div>
 
-                {/* Coaching */}
+                {/* Tapping */}
                 <div className="bg-warm-white rounded-2xl p-6 flex flex-col" style={{ borderTop: "3px solid #9a3412" }}>
-                  <p
-                    className="text-[11px] uppercase tracking-[0.2em] font-medium mb-3"
-                    style={{ color: "#9a3412" }}
-                  >
-                    With Leah
-                  </p>
+                  <div className="flex items-center justify-between mb-3">
+                    <p
+                      className="text-[11px] uppercase tracking-[0.2em] font-medium"
+                      style={{ color: "#9a3412" }}
+                    >
+                      With Leah
+                    </p>
+                    <p className="text-charcoal text-sm font-semibold">
+                      {TAPPING_CARD_PRICE}
+                    </p>
+                  </div>
                   <h3 className="font-display text-xl text-charcoal mb-2">
-                    Coaching
+                    A Tapping Session
                   </h3>
                   <p className="text-text-medium text-sm leading-relaxed flex-1">
-                    6 weeks one-on-one, built around the workbook, tailored to
-                    your situation. For when you don&apos;t want to do this
-                    alone.
+                    Sixty minutes, one to one, online. For the part of burnout
+                    that doesn&apos;t respond to knowing better. Sleep that
+                    won&apos;t come, dread before a specific thing, the
+                    exhaustion that&apos;s wired rather than tired.
                   </p>
                   <Link
-                    href="/coaching"
+                    href="/tapping"
                     className="mt-5 block w-full text-center py-2.5 rounded-full text-sm font-medium transition-colors"
                     style={{ backgroundColor: "#9a3412", color: "#fef3c7" }}
                   >
@@ -396,6 +394,50 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* Reduced price footnote */}
+              {TAPPING_REDUCED && (
+                <p className="text-text-light text-xs text-center">
+                  Tapping sessions at reduced rate while Leah finishes her
+                  qualification hours. Full price from {TAPPING_REDUCED_END}.
+                </p>
+              )}
+            </div>
+          </section>
+
+          {/* Coaching section below the cards */}
+          <section className="px-5 py-20 sm:py-28 bg-warm-white">
+            <div className="max-w-lg mx-auto space-y-6">
+              <p
+                className="text-[11px] uppercase tracking-[0.25em] font-medium"
+                style={{ color: "#9a3412" }}
+              >
+                Going further
+              </p>
+              <h2 className="font-display text-2xl sm:text-3xl text-charcoal">
+                When you don&apos;t want to do this alone.
+              </h2>
+              <div className="w-10 h-px" style={{ backgroundColor: "#9a3412" }} />
+              <p className="text-text-medium text-base sm:text-lg leading-relaxed">
+                Six weeks, one to one, built around the workbook and shaped to
+                your situation.
+              </p>
+              <p className="text-text-medium text-base sm:text-lg leading-relaxed">
+                The workbook gives you the structure. Coaching is what happens
+                when you hit the parts you can&apos;t think your way through on
+                your own, and you want someone in the room who has done this work
+                and come out the other side.
+              </p>
+              <p className="text-charcoal text-lg font-semibold">
+                $895 USD / &pound;660
+              </p>
+              <Link
+                href="/coaching"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-medium text-base transition-colors"
+                style={{ backgroundColor: "#9a3412", color: "#fef3c7" }}
+              >
+                Learn More
+              </Link>
             </div>
           </section>
         </>

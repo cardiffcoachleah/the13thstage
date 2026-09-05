@@ -365,7 +365,7 @@ export function Quiz({ onComplete }: QuizProps) {
             </h2>
             <p className="text-text-medium text-base leading-relaxed max-w-md mx-auto">
               Enter your email to see your full results and get a free copy of
-              <span className="italic"> The 13th Stage Guide</span> — our
+              <span className="italic"> The 13th Stage Guide</span>, our
               framework for burnout recovery.
             </p>
 
@@ -403,7 +403,7 @@ export function Quiz({ onComplete }: QuizProps) {
                 onClick={handleSubmit}
                 className="text-text-light text-sm underline underline-offset-2 hover:text-text-medium transition-colors"
               >
-                Skip — just show my results
+                Skip, just show my results
               </button>
             </div>
 

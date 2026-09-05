@@ -8,6 +8,11 @@ import {
   stageNames,
   crisisResources,
 } from "@/lib/quiz-data";
+import {
+  TAPPING_CARD_PRICE,
+  TAPPING_REDUCED,
+  TAPPING_REDUCED_END,
+} from "@/lib/tapping";
 
 interface ResultsProps {
   result: QuizResult;
@@ -16,14 +21,10 @@ interface ResultsProps {
 }
 
 export function Results({ result, answers, onRetake }: ResultsProps) {
-  const { band, totalScore, highestFlaggedStage, hasClusterOverride, stageScores } =
+  const { band, totalScore, highestFlaggedStage, hasClusterOverride } =
     result;
 
-  // Determine which stage to highlight on the arc
-  // Map total score to approximate stage position
   const approximateStage = Math.min(12, Math.max(1, Math.round((totalScore / 120) * 12)));
-
-  // Build personalized context paragraph
   const contextNarrative = buildContextNarrative(answers.context);
 
   return (
@@ -94,8 +95,8 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
           </p>
           <p className="text-text-dark text-sm leading-relaxed">
             While your overall pattern falls in the {band.label} range,
-            you&apos;re showing strong signals at Stage {highestFlaggedStage}{" "}
-            &mdash; {stageNames[highestFlaggedStage]}. Even if the rest of your
+            you&apos;re showing strong signals at Stage {highestFlaggedStage},{" "}
+            {stageNames[highestFlaggedStage]}. Even if the rest of your
             scores feel manageable, this area needs attention.
           </p>
         </motion.div>
@@ -129,15 +130,15 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
         </h3>
         <p className="text-peach/90 text-sm sm:text-base leading-relaxed">
           The burnout framework has 12 stages. They end in collapse. We added a
-          13th &mdash; because there&apos;s a stage after burnout, and it&apos;s
+          13th, because there&apos;s a stage after burnout, and it&apos;s
           the one that matters most. It&apos;s the active return to yourself. Not
           just rest. Not just time off. A structured process of stabilizing your
-          body, gathering your resources, and reimagining what comes next &mdash;
-          so you don&apos;t just recover, you build something different.
+          body, gathering your resources, and reimagining what comes next
+          so you don&apos;t just recover. You build something different.
         </p>
       </motion.div>
 
-      {/* ─── What You Can Do Next ─────────────────────── */}
+      {/* What You Can Do Next */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -162,7 +163,7 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
             The 13th Stage Guide
           </h4>
           <p className="text-text-medium text-sm leading-relaxed">
-            A short overview of the framework &mdash; the 12 stages, why
+            A short overview of the framework: the 12 stages, why
             recovery is Stage 13, and the three phases of coming back to
             yourself. Delivered to your inbox.
           </p>
@@ -204,7 +205,42 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
           </a>
         </div>
 
-        {/* Card 3: Coaching */}
+        {/* Card 3: Tapping */}
+        <div className="border border-line rounded-2xl p-6 space-y-3">
+          <div className="flex items-center justify-between">
+            <p
+              className="text-[11px] uppercase tracking-[0.2em] font-medium"
+              style={{ color: "#9a3412" }}
+            >
+              With Leah
+            </p>
+            <p className="text-text-medium text-sm font-medium">
+              {TAPPING_CARD_PRICE}
+            </p>
+          </div>
+          <h4 className="font-display text-lg text-charcoal">
+            A Tapping Session
+          </h4>
+          <p className="text-text-medium text-sm leading-relaxed">
+            Sixty minutes, one to one, online. For the part of burnout
+            that doesn&apos;t respond to knowing better. Sleep that
+            won&apos;t come, dread before a specific thing, the exhaustion
+            that&apos;s wired rather than tired.
+          </p>
+          <a
+            href="/tapping"
+            className="inline-block px-6 py-2.5 rounded-full border border-charcoal text-charcoal text-sm font-medium hover:bg-charcoal hover:text-warm-white transition-colors"
+          >
+            Learn More
+          </a>
+          {TAPPING_REDUCED && (
+            <p className="text-text-light text-xs">
+              Reduced rate until {TAPPING_REDUCED_END}.
+            </p>
+          )}
+        </div>
+
+        {/* Card 4: Coaching */}
         <div className="border border-line rounded-2xl p-6 space-y-3">
           <div className="flex items-center justify-between">
             <p
@@ -218,7 +254,7 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
             6-Week Coaching Program
           </h4>
           <p className="text-text-medium text-sm leading-relaxed">
-            Work through the 13th Stage framework one-on-one with Leah &mdash;
+            Work through the 13th Stage framework one-on-one with Leah,
             weekly or biweekly sessions built around the workbook, tailored to
             your situation. For when you don&apos;t want to do this alone.
           </p>
@@ -233,7 +269,7 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
         {/* Band-specific note */}
         {(band.id === "serious" || band.id === "crisis") && (
           <p className="text-text-medium text-sm leading-relaxed italic pt-2">
-            A coach or a workbook can be part of your recovery &mdash; but
+            A coach or a workbook can be part of your recovery, but
             please also consider talking to a therapist or doctor. You deserve
             professional support.
           </p>
@@ -265,7 +301,7 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
         </motion.div>
       )}
 
-      {/* Share + retake */}
+      {/* Retake */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -293,28 +329,24 @@ export function Results({ result, answers, onRetake }: ResultsProps) {
   );
 }
 
-// ─── Context narrative builder ─────────────────────────────────────
-
 function buildContextNarrative(
   context: Record<string, string | string[]>
 ): string {
   const parts: string[] = [];
 
-  // Duration
   const duration = context.duration as string;
   if (duration === "over_year") {
     parts.push("You\u2019ve been sitting with this for a long time.");
   } else if (duration === "half_year") {
     parts.push(
-      "This has been building for months \u2014 long enough to become the water you\u2019re swimming in."
+      "This has been building for months, long enough to become the water you\u2019re swimming in."
     );
   } else if (duration === "unsure") {
     parts.push(
-      "The fact that it crept up on you is itself a signal \u2014 burnout is rarely a single dramatic event."
+      "The fact that it crept up on you is itself a signal. Burnout is rarely a single dramatic event."
     );
   }
 
-  // History
   const history = context.history as string;
   if (history === "yes") {
     parts.push(
@@ -330,11 +362,10 @@ function buildContextNarrative(
     );
   }
 
-  // Role context
   const role = context.role as string;
   if (role === "executive" || role === "director") {
     parts.push(
-      "In your position, you\u2019re likely absorbing your team\u2019s stress on top of your own \u2014 and the expectation that you should be able to handle it all makes it harder to ask for help."
+      "In your position, you\u2019re likely absorbing your team\u2019s stress on top of your own, and the expectation that you should be able to handle it all makes it harder to ask for help."
     );
   } else if (role === "between") {
     parts.push(

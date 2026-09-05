@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "The 13th Stage Workbook — Self-Guided Burnout Recovery",
+  title: "The 13th Stage Workbook | Self-Guided Burnout Recovery",
   description:
     "A 6-week self-guided burnout recovery workbook with exercises, somatic practices, and a framework for building a life that doesn't burn you out again. $27.",
   openGraph: {
@@ -49,7 +49,7 @@ export default function WorkbookPage() {
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             It&apos;s not a book about burnout. You already know you&apos;re
-            burned out. This is the part that comes after &mdash; the part
+            burned out. This is the part that comes after, the part
             nobody talks about.
           </p>
 
@@ -66,7 +66,7 @@ export default function WorkbookPage() {
               />
               <div>
                 <h3 className="text-charcoal font-semibold mb-1">
-                  The 12 Stages — with context
+                  The 12 Stages, with context
                 </h3>
                 <p className="text-text-medium text-sm leading-relaxed">
                   Each stage described through how it shows up at work, at home,
@@ -87,7 +87,7 @@ export default function WorkbookPage() {
                 </h3>
                 <p className="text-text-medium text-sm leading-relaxed">
                   The neuroscience of burnout, the stress cycle, and the
-                  executive function checklist &mdash; sleep, nutrition,
+                  executive function checklist: sleep, nutrition,
                   hydration, movement, sunlight, breath. Getting your foundation
                   back before trying to rebuild anything else.
                 </p>
@@ -105,7 +105,7 @@ export default function WorkbookPage() {
                 </h3>
                 <p className="text-text-medium text-sm leading-relaxed">
                   Building your support map, doing the shame inventory, and
-                  figuring out what you actually need &mdash; not what you think
+                  figuring out what you actually need, not what you think
                   you should need.
                 </p>
               </div>
@@ -153,7 +153,7 @@ export default function WorkbookPage() {
 
           <p className="text-text-dark text-base sm:text-lg leading-[1.85]">
             Designed fillable PDF. Approximately 50 pages. You can type directly
-            into it or print it and write by hand &mdash; whichever feels right.
+            into it or print it and write by hand, whichever feels right.
             Delivered instantly after purchase.
           </p>
 
